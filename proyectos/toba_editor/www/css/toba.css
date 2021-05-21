@@ -1,0 +1,496 @@
+/* Algunos estilos especificos por operaciones */
+#cuerpo_js_form_1999_form * {
+	text-align:center;
+}
+/* Ef nombre de archivo en wizard de extension */
+#ef_form_2288_form_nombrearchivo {
+	padding-top: 2px;
+	white-space: normal;
+}
+.logo-inicio {
+	width: 600px;
+	height: 220px;
+	background-color:white;
+	padding: 20px;
+	border-radius: 10px;
+	-moz-border-radius: 10px;	
+	-webkit-border-radius: 10px;	
+}
+
+.ef-barra-divisora div {
+	font-weight: normal;
+	float: right;
+}
+
+#editor-ef .ei-base {
+	background-color: #E7E4E0 !important;
+}
+#editor-ef .ei-form-etiq-oblig {
+	font-weight: normal;
+}
+
+/* Se sacan algunos bordes */
+.ei-form-base, .ei-cuadro-cc-fondo, .ei-cuadro-cuerpo, .ci-tabs-h-cont, .ci-cuerpo {
+	border:none !important;
+}
+
+/* Los cortes de control se ven muy grandotes*/
+.ei-cuadro-cc-tit-nivel-0 {
+	background-color: transparent;
+	border: none;
+	color: black;
+	font-size: 12px;
+	
+}
+/* Margen inferior a los ei_arbol */
+.ei-arbol-cuerpo {
+	margin-bottom: 4px;	
+}
+.ei-arbol-nombre {
+	font-size:11px;
+}
+
+.barra-separador {
+	font-size:9px;
+}
+#editor_previsualizacion {
+	display:none;
+}
+.mensaje-cuerpo-info {
+	font-weight: normal;
+}
+.css-preview {
+	border: 1px solid black;
+	width:32px;
+	height:32px;
+	cursor: pointer;
+	cursor: _hand;
+}
+.editor-imagen-preview {
+	vertical-align: middle;
+	white-space: nowrap;
+}
+.editor-imagen-preview img {
+	cursor: pointer;
+	_cursor: hand;	
+	vertical-align: middle;
+	border: 1px solid gray;
+	padding: 2px;
+}
+#editor_imagen_opciones {
+	text-align: left;
+	vertical-align: middle;
+}
+#editor_imagen_listado {
+	height: 300px; 
+	overflow:scroll;
+}
+#editor_imagen_listado img {
+	vertical-align: middle;
+}
+#editor_imagen_listado table {
+	width: 100%;
+}
+#editor_imagen_listado td {
+	text-align: center;
+	padding-top: 10px;
+	vertical-align: bottom;
+	cursor: pointer;
+	_cursor: hand;	
+}
+#editor_imagen_listado div {
+	font-size: 11px;
+	font-family: Verdana, Tahoma, Arial, sans-serif;	
+	margin: 5px;
+}
+.ei-barra-sup-desc-info {
+	background-color: transparent;
+}
+.editor-lista-vinculos {
+	white-space: nowrap;
+	text-align:right;
+}
+.editor-vista-previa {
+	border: 1px solid gray;
+	background-color:#E9E8E8;
+	padding: 5px;
+}
+.editor-vista-previa img {
+	vertical-align: middle;
+}
+.editor-vista-previa div{
+	text-align: right;
+}
+.editor-convenciones-tabla {
+	margin-top: 10px;
+}
+.editor-linea-codigo {
+	background-color:#D4D0C8;
+	color: black;
+	font-size: 10px;
+	padding-top: 2px;
+	padding-right: 2px;
+	margin-left: -4px;
+	width: 20px;
+	text-align: right;
+}
+.editor-vista-previa-codigo {
+	overflow: auto;
+	width: 100%;
+	padding: 5px;
+	text-align:left;
+	background-color: #ffffff;
+	font-size: 11px;
+}
+.editor-vista-previa-codigo img {
+	position: absolute;
+}
+.cronometro-total {
+	font-weight: bold;
+	font-size: 20px;	
+}
+.cronometro-total img {
+	vertical-align:middle;
+}
+.logger-opciones {
+	border:1px solid black; 
+	text-align: left;
+	list-style-type: none;
+	padding: 4px;
+	margin: 0; 
+	background-color:white;
+}		
+.logger-proyecto {
+	font-size: 20px;
+	font-weight: bold;
+	float: right;
+}
+.logger-traza {
+	font-weight: bold;
+		TEXT-DECORATION: underline;
+		color: blue;
+		cursor: pointer;
+}
+.logger-traza-detalle {
+	white-space: pre;
+	display: block;
+}
+.logger-traza-detalle ul {
+	white-space: normal;
+}
+.logger-selec {
+	font-size:14px;
+	display: block;
+}
+.logger-normal {
+	padding-left: 10px;
+}
+.logger-seccion {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	font-weight: bold;
+}
+.columna-preview {
+	border: 1px solid gray;
+	padding-left: 4px;
+	padding-right:4px;
+}
+
+
+/*** Parte Vieja **/
+
+TD.cron-nucleo {
+	BORDER-RIGHT: #231f20 1px solid;
+	 BORDER-TOP: #e9e8e8 1px solid;
+	 FONT-WEIGHT: bold;
+	 BORDER-LEFT: #231f20 1px solid;
+	 COLOR: #e9e8e8;
+	 BORDER-BOTTOM: #231f20 1px solid;
+	 BACKGROUND-COLOR: #4f4c4d;
+	 TEXT-ALIGN: left
+}
+TD.cron-objeto {
+	BORDER-RIGHT: #231f20 1px solid;
+	 BORDER-TOP: #e9e8e8 1px solid;
+	 FONT-WEIGHT: bold;
+	 BORDER-LEFT: #231f20 1px solid;
+	 COLOR: #e9e8e8;
+	 BORDER-BOTTOM: #231f20 1px solid;
+	 BACKGROUND-COLOR: #7b7979;
+	 TEXT-ALIGN: left
+}
+TD.cron-item {
+	BORDER-RIGHT: #231f20 1px solid;
+	 BORDER-TOP: #e9e8e8 1px solid;
+	 FONT-WEIGHT: bold;
+	 BORDER-LEFT: #231f20 1px solid;
+	 COLOR: #e9e8e8;
+	 BORDER-BOTTOM: #231f20 1px solid;
+	 BACKGROUND-COLOR: #231f20;
+	 TEXT-ALIGN: left
+}
+TD.cron-lib {
+	BORDER-RIGHT: #231f20 1px solid;
+	 BORDER-TOP: #e9e8e8 1px solid;
+	 FONT-WEIGHT: bold;
+	 BORDER-LEFT: #231f20 1px solid;
+	 COLOR: #e9e8e8;
+	 BORDER-BOTTOM: #231f20 1px solid;
+	 BACKGROUND-COLOR: #a7a5a6;
+	 TEXT-ALIGN: left
+}
+TD.cron-basura {
+	BORDER-RIGHT: #231f20 1px solid;
+	 BORDER-TOP: #e9e8e8 1px solid;
+	 FONT-WEIGHT: bold;
+	 BORDER-LEFT: #231f20 1px solid;
+	 COLOR: #e9e8e8;
+	 BORDER-BOTTOM: #231f20 1px solid;
+	 BACKGROUND-COLOR: #a7a5a6;
+	 TEXT-ALIGN: left
+}
+
+.lista-e {
+	BORDER-RIGHT: #4f4c4d 1px solid;
+	 PADDING-RIGHT: 2px;
+	 BORDER-TOP: #4f4c4d 1px solid;
+	 PADDING-LEFT: 2px;
+	 PADDING-BOTTOM: 2px;
+	 MARGIN: 0px;
+	 BORDER-LEFT: #4f4c4d 1px solid;
+	 COLOR: #231f20;
+	 PADDING-TOP: 2px;
+	 BORDER-BOTTOM: #4f4c4d 1px solid;
+	 BACKGROUND-COLOR: #a7a5a6;
+	 TEXT-ALIGN: right;
+}
+TD.lista-t {
+	BORDER-RIGHT: #4f4c4d 1px solid;
+	 PADDING-RIGHT: 2px;
+	 BORDER-TOP: #4f4c4d 1px solid;
+	 PADDING-LEFT: 2px;
+	 PADDING-BOTTOM: 2px;
+	 MARGIN: 0px;
+	 BORDER-LEFT: #4f4c4d 1px solid;
+	 COLOR: #231f20;
+	 PADDING-TOP: 2px;
+	 BORDER-BOTTOM: #4f4c4d 1px solid;
+	 BACKGROUND-COLOR: #ffffff;
+	 TEXT-ALIGN: left
+}
+TD.lista-n {
+	BORDER-RIGHT: #4f4c4d 1px solid;
+	 PADDING-RIGHT: 2px;
+	 BORDER-TOP: #4f4c4d 1px solid;
+	 PADDING-LEFT: 2px;
+	 PADDING-BOTTOM: 2px;
+	 MARGIN: 0px;
+	 BORDER-LEFT: #4f4c4d 1px solid;
+	 COLOR: #231f20;
+	 PADDING-TOP: 2px;
+	 BORDER-BOTTOM: #4f4c4d 1px solid;
+	 BACKGROUND-COLOR: #ffffff;
+	 TEXT-ALIGN: right
+}
+
+TD.lista-e2 {
+	BORDER-RIGHT: #4f4c4d 1px solid;
+	 PADDING-RIGHT: 2px;
+	 BORDER-TOP: #4f4c4d 1px solid;
+	 PADDING-LEFT: 2px;
+	 PADDING-BOTTOM: 2px;
+	 MARGIN: 0px;
+	 BORDER-LEFT: #4f4c4d 1px solid;
+	 COLOR: #231f20;
+	 PADDING-TOP: 2px;
+	 BORDER-BOTTOM: #4f4c4d 1px solid;
+	 BACKGROUND-COLOR: #7b7979;
+	 TEXT-ALIGN: center
+}
+
+TD.barra-obj-io {
+	background-image: -webkit-gradient(
+	    linear,
+	    left top,
+	    left bottom,
+	    color-stop(0.5, #7485b3),
+	    color-stop(0.5, #5268a1)
+	);
+	background-image: -moz-linear-gradient(
+	    center top,
+	    #7485b3 50%,
+	    #5268a1 50%
+	);		
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient (GradientType=0, startColorstr=#7485b3, endColorstr=#5268a1)";	
+	border: #082d5a 1px solid ;
+	border-bottom: 1px solid #002556;
+	color: white;
+	min-height: 38px;	
+	padding: 6px 10px 6px 10px;
+	 FONT-WEIGHT: bold;
+	 FONT-SIZE: 12px;
+	 PADDING-BOTTOM: 6px;
+	 COLOR: white;
+	 PADDING-TOP: 6px;
+}
+TD.barra-obj-link, TD.barra-obj-id {
+	BORDER-RIGHT: #4f4c4d 1px solid;
+	 PADDING-RIGHT: 2px;
+	 PADDING-LEFT: 2px;
+	 FONT-SIZE: 10px;
+	 PADDING-BOTTOM: 2px;
+	 BORDER-LEFT: #4f4c4d 1px solid;
+	 COLOR: #231f20;
+	 PADDING-TOP: 2px;
+	 BORDER-BOTTOM: #4f4c4d 1px solid;
+	 BACKGROUND-COLOR: #e9e8e8;
+	 TEXT-ALIGN: left
+}
+TD.barra-obj-id {
+	 TEXT-ALIGN: center;
+}
+.barra-obj-tit {
+	border: #4f4c4d 1px solid;
+	font-size: 11px;
+	color: #4f4c4d;
+	background-color: #a7a5a6;
+	text-align: left
+}
+.listado-barra-fila {
+		background-color: #244268;
+}
+.listado-barra:first-child {
+	background: transparent;
+}
+.listado-barra-logo {
+	margin-left: -1px;
+	font-size: 20px;
+	color:white;
+	font-weight:bold;
+	padding-left: 22px;
+	padding-top:5px;
+	padding-bottom: 5px;
+	font-family: 'Helvetica';
+	border-right: 1px solid #FAE2C8;
+	border-bottom: 1px solid #CA531B;
+	
+	background-image: -webkit-gradient(
+	    linear,
+	    left top,
+	    left bottom,
+	    color-stop(0.5, #f59500),
+	    color-stop(0.5, #e68a23)
+	);
+	background-image: -moz-linear-gradient(
+	    center top,
+	    #f59500 50%,
+	    #e68a23 50%
+	);	
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient (GradientType=0, startColorstr=#f59500, endColorstr=#e68a23)";	
+}
+.listado-barra-logo a {
+	color: white;
+	text-decoration:none;	
+}
+.listado-barra-superior select {
+	width: 150px;
+	margin-right: 5px;
+}
+TD.listado-barra-superior {
+	PADDING-RIGHT: 0px;
+	 PADDING-LEFT: 0px;
+	 PADDING-BOTTOM: 0px;
+	 MARGIN: 0px;
+	 PADDING-TOP: 0px;
+     /*BACKGROUND-COLOR: #231f20;*/
+	 TEXT-ALIGN: right
+}
+TD.listado-tabn {
+	BORDER-RIGHT: #a7a5a6 1px solid;
+	 PADDING-RIGHT: 2px;
+	 BORDER-TOP: #a7a5a6 1px solid;
+	 PADDING-LEFT: 2px;
+	 FONT-SIZE: 10px;
+	 PADDING-BOTTOM: 2px;
+	 MARGIN: 0px;
+	 BORDER-LEFT: #a7a5a6 1px solid;
+	 COLOR: #7b7979;
+	 PADDING-TOP: 2px;
+	 BORDER-BOTTOM: #a7a5a6 1px solid;
+	 BACKGROUND-COLOR: #4f4c4d;
+	 TEXT-ALIGN: center
+}
+TD.listado-tabn-m {
+	BORDER-RIGHT: #a7a5a6 1px solid;
+	 PADDING-RIGHT: 2px;
+	 BORDER-TOP: #a7a5a6 1px solid;
+	 PADDING-LEFT: 2px;
+	 FONT-SIZE: 10px;
+	 PADDING-BOTTOM: 2px;
+	 MARGIN: 0px;
+	 BORDER-LEFT: #a7a5a6 1px solid;
+	 COLOR: #7b7979;
+	 PADDING-TOP: 2px;
+	 BORDER-BOTTOM: #a7a5a6 1px solid;
+	 BACKGROUND-COLOR: #231f20;
+	 TEXT-ALIGN: center
+}
+.listado-tabc {
+	background-image: -webkit-gradient(
+	    linear,
+	    left top,
+	    left bottom,
+	    color-stop(0.5, #5368a1),
+	    color-stop(0.5, #234068)
+	);
+	background-image: -moz-linear-gradient(
+	    center top,
+	    #5368a1 50%,
+	    #234068 50%
+	);
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient (GradientType=0, startColorstr=#5368a1, endColorstr=#234068)";
+	width: 158px;
+	border-radius: 6px;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border: #123360 1px solid ;
+	border-bottom: 1px solid #7586a2;
+}
+.listado-tabi {
+	padding: 2px;
+	width: 32px;
+	text-align: center;
+	border-left: 1px solid #143568;
+}
+.listado-tabi:first-child {
+	border: 0;
+}
+TD.listado-normal {
+	PADDING-RIGHT: 0px;
+	 PADDING-LEFT: 0px;
+	 FONT-SIZE: 11px;
+	 PADDING-BOTTOM: 0px;
+	 MARGIN: 0px;
+	 COLOR: #e9e8e8;
+	 PADDING-TOP: 0px;
+	 BACKGROUND-COLOR: #4f4c4d;
+	 TEXT-ALIGN: center
+}
+A.listado-tabn-l {
+	TEXT-DECORATION: none
+}
+A.list-obj {
+	COLOR: #e9e8e8;
+	 TEXT-DECORATION: none
+}
+TD.listado-linea {
+	PADDING-RIGHT: 0px;
+	 PADDING-LEFT: 0px;
+	 PADDING-BOTTOM: 0px;
+	 MARGIN: 0px;
+	 PADDING-TOP: 0px;
+	 BACKGROUND-COLOR: #7b7979
+}
+
+
+

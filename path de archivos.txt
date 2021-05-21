@@ -1,0 +1,16 @@
+Archivos:
+
+toba_autoload.php			->	toba_dir/php/toba_autoload.php
+toba_db.php 				->	toba_dir/php/lib/db/toba_db.php
+toba_db_oracle.php 			->	toba_dir/php/lib/db/toba_db_oracle.php
+toba_varios.php				->	toba_dir/php/lib/toba_varios.php
+toba_modelo_instalacion.php	->	toba_dir/php/modelo/toba_modelo_instalacion.php
+toba_ap_tabla_db_s.php		->	toba_dir/php/nucleo/componentes/persistencia/toba_ap_tabla_db_s.php
+aplicacion.php			->	toba_dir/proyectos/toba_editor/www/aplicacion.php
+
+
+
+Metadatos de Toba:
+Incluir la fuente de datos "Oracle" ejecutando el siguiente insert sobre la base de datos de Toba, que se encuentra en PostgreSQL, para el esquema desarrollo:
+
+INSERT INTO desarrollo.apex_fuente_datos_motor (fuente_datos_motor, nombre, version) VALUES ('oracle', 'Oracle', '10g');

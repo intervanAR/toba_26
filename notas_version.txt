@@ -1,0 +1,49 @@
+=== 2.6.1 ===
+ * Correccion en la lectura de parametros para el captcha
+ * Correccion ER de chequeo de mails
+ * Agregado de funcionalidad a la clase calendario
+ * Se agrega helper para validar recursos REST
+ * Correccion en el calculo de la revision svn
+ * Correccion ef_cbu
+ * Correccion en la clase de autenticacion ldap
+ * Se agregan gatillos especificos al perfil de datos
+ 
+=== 2.6.2 ===
+ * Correccion en esquema de personalizaciones, schema original, directorio de carga, archivo ini
+ * Se agrega SQLServer como motor valido para fuentes
+ * Cambio de scope en funcion get_parametros_interaccion del ei_cuadro
+ * Se agrega posibilidad de hacer instalacion desatendida
+ * Correccion al cambiar iconos del popup
+ * Correccion en la URL de retorno de SAML para los deslogueos
+ * Se quita chequeo de autenticacion centralizada para proyectos que no requieren validar
+ * Se corrige ruta de acceso a archivo ini en simplesamlphp
+ * Se modifica la forma de obtener la bd de negocio en toba_usuarios al asignar perfil de datos
+ * Se puede extender el chequeo de existencia del usuario en los metodos centralizados
+ 
+=== 2.6.3 ===
+ * Merge de actualizaciones para la libreria REST
+ 
+=== 2.6.4 ===
+ * Se elimina ER del campo usuario en el form de login
+ * Se agrega la columna del punto de montaje en el DT de la fuente de datos
+ * Se corrige problema de apertura de popups en Firefox
+ * Se corrigen problemas relacionados con el punto de montaje en toba_manejador_sesiones
+ * Soporte para una instalacion Docker de Toba, lista para crear o cargar un proyecto
+
+=== 2.6.5 ===
+ * Se agrega tipo booleano a los parametros para Jasper
+ * Se corrige problema entre RF y efs inexistentes
+ * Se pasa el nombre de los nodos de toba_ei_arbol por la funcion texto_plano
+ * Se resetea el mapeo de filas eliminadas en el mapeo entre tablas del DR
+ * Se modifica la edicion de dimensiones en el editor, ahora puede seleccionar tablas de mas de un schema
+
+=== 2.6.6 ===
+ * Se limpian datos viejos de vinculos cuando una columna del cuadro no tiene evt asociado
+ * Se agrega la posibilidad de ejecutar test desde la carpeta de personalizaciones
+ * Fix en el editor al agregar dependencias con un mismo ID
+ * Fix en formulario_ml, el boton agregar ahora respeta el parametro de visualizacion
+ * Se corrige problema al leer valores booleanos desde archivos ini
+ * Se agrega archivo web_server.ini para indicar los parametros de armado de la URL
+ * Se corrige problema al recuperar los desafios del usuario para el cambio de pwd
+ 
+=== 2.6.7 === 

@@ -1,0 +1,13 @@
+DROP SEQUENCE ref_persona_juegos_id_seq CASCADE;
+DROP TABLE ref_persona_juegos CASCADE;
+DROP SEQUENCE ref_persona_id_seq CASCADE;
+DROP SEQUENCE ref_persona_deportes_id_seq CASCADE;
+DROP TABLE ref_persona_deportes CASCADE;
+DROP TABLE ref_persona CASCADE;
+DROP SEQUENCE ref_juegos_oferta_id_seq CASCADE;
+DROP TABLE ref_juegos_oferta CASCADE;
+DROP SEQUENCE ref_juegos_id_seq CASCADE;
+DROP TABLE ref_juegos CASCADE;
+DROP SEQUENCE ref_deportes_id_seq CASCADE;
+DROP TABLE ref_deportes CASCADE;
+DROP TABLE iso_countries;

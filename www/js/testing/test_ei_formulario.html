@@ -1,0 +1,343 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+  <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">  
+    <title>JsUnit Test</title>
+    <link rel="stylesheet" type="text/css" href="../jsunit/css/jsUnitStyle.css">
+
+<script language="JavaScript1.4" type="text/javascript" src="../jsunit/app/jsUnitCore.js"></script>
+<script language="JavaScript1.4" type="text/javascript" src="../basico.js"></script>
+<script language="JavaScript1.4" type="text/javascript" src="../notificacion.js"></script>
+<script language="JavaScript1.4" type="text/javascript" src="../interface/ef.js"></script>
+<script language="JavaScript1.4" type="text/javascript" src="../interface/ef_checkbox.js"></script>
+<script language="JavaScript1.4" type="text/javascript" src="../interface/ef_editable.js"></script>
+<script language="JavaScript1.4" type="text/javascript" src="../interface/ef_combo.js"></script>
+<script language="JavaScript1.4" type="text/javascript" src="../clases/objeto.js"></script>
+<script language="JavaScript1.4" type="text/javascript" src="../clases/objeto_ci.js"></script>
+<script language="JavaScript1.4" type="text/javascript" src="../clases/objeto_ei_formulario.js"></script>
+<SCRIPT  language='JavaScript1.4' type='text/javascript'>
+ ereg_nulo = /^\s*$/;
+</SCRIPT>
+<script language="JavaScript1.4" type="text/javascript">
+
+
+//--------------------------------------------------------------------
+
+//Mock de un ef que siempre valida bien
+var clase_ef_ok = function(test) {
+	this.test = test;
+	this.id = function() { return 'primero' };
+	this.iniciar = function() {};
+	this.set_tab_index = function(numero) {
+		test.assertEquals(8, numero);
+	};		
+	this.cuando_cambia_valor = function(a) {};
+	this.resetear_error = function() {};
+	this.no_resaltar = function() {};
+	this.resaltar = function() {};	
+	this.validar = function() { return true; }
+	this.error = function() {};
+}
+
+//Mock de un ef que siempre valida mal
+var clase_ef_error = function(test) {
+	this.test = test;
+	this.id = function() { return 'segundo' };
+	this.iniciar = function() {};
+	this.set_tab_index = function(numero) {
+		test.assertEquals(9, numero);
+	};		
+	this.cuando_cambia_valor = function() {};
+	this.resetear_error = function() {};
+	this.no_resaltar = function() {};
+	this.resaltar = function() {};	
+	this.validar = function() { return false; }
+	this.error = function() {};
+}
+
+//--------------------------------------------------------------------
+//--- VALIDACION ESTANDAR
+function test_sin_efs() {
+	var formu = new objeto_ei_formulario('form', new Array(1, 50), 'ei_form1148');
+	formu._silencioso = true;	
+	formu.iniciar();
+	this.assertTrue(formu.validar());
+}
+
+function test_validacion_y_tabs() {
+	//1er caso un ef correcto
+	var formu = new objeto_ei_formulario('form', new Array(8, 50), 'ei_form1148');
+	formu._silencioso = true;	
+	formu.agregar_ef( new clase_ef_ok(this), 'el_ok');
+	formu.iniciar();
+	formu.set_evento(new evento_ei("modificacion", true, ""), false);
+	this.assertTrue(formu.validar());
+	
+	//2do caso un ef correcto y uno erroneo
+	var formu = new objeto_ei_formulario('form', new Array(8, 50), 'ei_form1148');
+	formu._silencioso = true;
+	formu.agregar_ef( new clase_ef_ok(this), 'el_ok');
+	formu.agregar_ef( new clase_ef_error(this), 'el_error');
+	formu.iniciar();
+	formu.set_evento(new evento_ei("modificacion", true, ""), false);
+	this.assertFalse(formu.validar());
+}
+
+//--------------------------------------------------------------------
+//--- EVENTOS 
+function test_eventos_siempre_modifica_con_error() {
+	//Siempre modifica y hay un ef con error
+	var formu = new objeto_ei_formulario('form', new Array(9, 50), 'ei_form1148');
+	formu._silencioso = true;
+	formu.agregar_ef( new clase_ef_error(this), 'el_ef');
+	formu.set_evento_defecto(new evento_ei("modificacion", true, ""), false);
+	formu.iniciar();
+	this.assertFalse(formu.puede_submit());
+}
+
+function test_eventos_siempre_modifica_sin_error() {
+	//Siempre modifica y no hay ef con error
+	var formu = new objeto_ei_formulario('form', new Array(8, 50), 'ei_form1148');
+	formu._silencioso = true;
+	llamado_submit = false;
+	formu.agregar_ef( new clase_ef_ok(this), 'el_ef');
+	formu.iniciar();
+	formu.set_evento(new evento_ei("modificacion", true, ""), false);
+	this.assertTrue(formu.puede_submit());
+}
+
+function test_eventos_sin_evento() {
+	//No se produce evento y hay un ef con error, no debe validar ni hacer el submit de los ef
+	var formu = new objeto_ei_formulario('form', new Array(9, 50), 'ei_form1148');
+	formu._silencioso = true;
+	formu.agregar_ef( new clase_ef_error(this), 'el_error');
+	formu.iniciar();
+	this.assertTrue(formu.puede_submit());
+}
+
+function test_eventos_limpiar_ef_sin_error() {
+	//Se produce evento limpiar y hay un ef sin error, no debe validar ni hacer el submit de los ef
+	var formu = new objeto_ei_formulario('form', new Array(8, 50), 'ei_form1148');
+	formu._silencioso = true;
+	formu.agregar_ef( new clase_ef_ok(this), 'el_error');
+	formu.iniciar();
+	formu.set_evento(new evento_ei('limpiar', false, 'hola'), false)
+	this.assertTrue(formu.puede_submit());
+}
+
+function test_eventos_eliminar_ef_con_error() {
+	//Se produce evento eliminar y hay un ef con error, no debe validar ni hacer el submit de los ef
+	var formu = new objeto_ei_formulario('form', new Array(9, 50), 'ei_form1148');
+	formu._silencioso = true;
+	formu.agregar_ef( new clase_ef_error(this), 'el_error');
+	formu.iniciar();
+	formu.set_evento(new evento_ei('baja', false, 'hola'), false)
+	this.assertTrue(formu.puede_submit());	
+}
+
+function test_eventos_modificar_ef_con_error() {
+	//Se produce evento modificar y hay un ef con error, debe validar y no debe hacer el submit de los ef
+
+	formu = new objeto_ei_formulario('form', new Array(9, 50), 'ei_form1148');
+	formu._silencioso = true;
+	formu.agregar_ef( new clase_ef_error(this), 'el_error');
+	formu.iniciar();
+	formu.set_evento(new evento_ei('modificar', true, 'confirmacion'), false)
+	this.assertFalse(formu.puede_submit());
+}
+
+function test_eventos_modificar_ef_sin_error() {
+	//Se produce evento modificar y no hay un ef con error, debe validar y debe hacer el submit de los ef
+	llamado_submit = false;
+	var formu = new objeto_ei_formulario('form', new Array(8, 50), 'ei_form1148');
+	formu._silencioso = true;
+	formu.agregar_ef( new clase_ef_ok(this), 'el_error');
+	formu.iniciar();
+	formu.set_evento(new evento_ei('modificar', true, 'confirmacion'), false)
+	this.assertTrue(formu.puede_submit());
+}
+
+function test_eventos_pide_confirmacion() {
+	//Se produce evento modificar con confirmacion, requiere que el usuario presione OK
+	llamado_submit = false;
+	var formu = new objeto_ei_formulario('form', new Array(8, 50), 'ei_form1148');
+	formu.agregar_ef( new clase_ef_ok(this), 'el_error');
+	formu.iniciar();
+	formu.set_evento(new evento_ei('modificar', true, 'PRESIONE OK!!'), false)
+	this.assertTrue(formu.puede_submit());
+}
+
+
+//------------------------------------------------------------------------------------------
+//--- Validaciones particulares
+function test_validador_nuevo() {
+	formu = new objeto_ei_formulario('formu', new Array(8, 50), 'ei_form1148');	
+	formu._silencioso = true;
+	formu.agregar_ef(new ef_checkbox('formulario1148checkbox', 'Checkbox', false), 'el_check');
+	formu.agregar_ef(new ef_editable('formulario1148editable', 'Editable', true, ''), 'el_editable');	//Editable obligatorio
+	formu.iniciar();
+	formu.set_evento(new evento_ei('modificar', true, 'confirmacion'), false)
+	
+	formu.ef('el_editable').set_estado('');	//Lo pone vacio 
+	this.assertFalse(formu.validar());
+
+	//Una validacion nueva, si no esta chequeado pasar por alto el obligatorio del editable 
+	formu.validar = function() {
+		if (this.ef('el_check').chequeado())
+			return this.validacion_defecto();
+		else
+			return true;
+	}
+	this.assertTrue(formu.validar());
+}
+
+
+function test_puede_submit_nuevo() {
+	formu = new objeto_ei_formulario('formu', new Array(8, 50), 'ei_form1148');	
+	formu._silencioso = true;
+	formu.agregar_ef(new ef_checkbox('formulario1148checkbox', 'Checkbox', false), 'el_check');
+	formu.agregar_ef(new ef_editable('formulario1148editable', 'Editable', false, ''), 'el_editable');
+	
+	var llamado = false;
+	formu.puede_submit_estandar = formu.puede_submit;	
+	formu.puede_submit = function() {
+		if (this.puede_submit_estandar()) {
+			llamado = true;
+		}
+	}
+	formu.iniciar();
+	formu.set_evento(new evento_ei('modificar', true, 'confirmacion'), false)
+	formu.puede_submit();
+	this.assertTrue(llamado);
+}
+
+function test_validacion_en_agregar() {
+	formu = new objeto_ei_formulario('formu', new Array(8, 50), 'ei_form1148');	
+	formu._silencioso = true;
+	formu.agregar_ef(new ef_checkbox('formulario1148checkbox', 'Checkbox', false), 'el_check');
+	formu.agregar_ef(new ef_editable('formulario1148editable', 'Editable', false, ''), 'el_editable');
+
+	formu.evt__alta = function() {
+		var editable = this.ef('el_editable');
+		if (editable.get_estado() % 2 != 0)
+			return false;
+		else
+			return true;
+	}
+	
+	formu.iniciar();	
+	formu.set_evento(new evento_ei('alta', true, 'confirmacion'), false)
+	formu.ef('el_editable').set_estado('87');	//Lo pone impar
+	this.assertFalse(formu.puede_submit());
+
+	formu.ef('el_editable').set_estado('86');	//Lo pone par
+	this.assertTrue(formu.puede_submit());
+}
+
+//------------------------------------------------------------------------------------------
+//--- Procesamiento de efs
+
+var formu; //Lamentablemente para procesmientos particulares los formularios necesitan ser variables globales (ouchh!) 
+
+function test_procesar_submit() {
+	formu = new objeto_ei_formulario('formu', new Array(8, 50), 'ei_form1148');	
+	formu.agregar_ef(new ef_checkbox('formulario1148checkbox', 'Checkbox', false), 'el_check');
+	formu.agregar_ef(new ef_combo('formulario1148combo', 'Combo', false), 'el_combo');
+	formu.agregar_ef(new ef_editable('formulario1148editable', 'Editable', true, ''), 'el_editable');
+	formu._silencioso = true;
+	
+	var llamado = false;
+	formu.evt__modificar = function() {
+		llamado = true;
+	}
+	
+	//Extension del procesamiento del ef el_combo
+	//El parametros opcional es_inicial sirve para distinguir el disparo inicial del procesamiento
+	formu.submit = function () {
+		llamado = true;
+	}
+	formu.evt__el_combo__procesar = function (es_inicial) {
+		if (! es_inicial) {
+			this.set_evento(new evento_ei('modificar', true, 'confirmacion'), false);
+			this.submit();
+		}
+	}
+	formu.iniciar();
+	this.assertFalse(llamado);
+	formu.ef('el_combo').set_estado('c');
+	formu.refrescar_procesamientos();
+	this.assertTrue(llamado);	
+}
+
+function test_procesar_ocultar() {
+	formu = new objeto_ei_formulario('formu', new Array(8, 50), 'ei_form1148');	
+	formu.agregar_ef(new ef_checkbox('formulario1148checkbox', 'Checkbox', false), 'el_check');
+	formu.agregar_ef(new ef_combo('formulario1148combo', 'Combo', false), 'el_combo');
+	formu.agregar_ef(new ef_editable('formulario1148editable', 'Editable', true, ''), 'el_editable');
+	
+	//Extension del procesamiento del ef el_check
+	formu.evt__el_check__procesar = function () {
+		if (this.ef('el_check').chequeado())
+			this.ef('el_editable').activar();
+		else
+			this.ef('el_editable').desactivar();
+	}
+	formu.iniciar();
+	formu.set_evento(new evento_ei('modificar', true, 'confirmacion'), false)
+	
+	this.assertFalse(formu.ef('el_editable').activo());
+	formu.ef('el_check').chequear();	
+	formu.refrescar_todo();
+	this.assertTrue(formu.ef('el_editable').activo());
+}
+
+
+</script>
+</head>
+<body>
+<form  enctype='multipart/form-data' name='formulario' method='POST' action=''  style='margin-bottom:0;margin-top:0;'> 
+<table class='tabla-0'  width=''> 
+	<tr> 
+		<td class='abm-fila'> <div id='formulario1148checkbox_div'> 
+				<table border='0' width='150' cellpadding='0' cellspacing='0'> 
+					<tr> 
+						<td class='ef-etiqueta'>&nbsp;Checkbox </td> 
+						<td class='ef-zonainput'><input name='formulario1148checkbox' id='formulario1148checkbox' type='checkbox' value='1'  class='' > </td> 
+					</tr> 
+				</table> 
+			</div></td> 
+	</tr> 
+	<tr> 
+		<td class='abm-fila'> <div id='formulario1148combo_div'> 
+				<table border='0' width='150' cellpadding='0' cellspacing='0'> 
+					<tr> 
+						<td class='ef-etiqueta'>&nbsp;Combo </td> 
+						<td class='ef-zonainput'> <select name='formulario1148combo' id='formulario1148combo' class='ef-combo' > 
+								<option value='nopar' selected>---seleccione---</option> 
+								<option value='a'>a</option> 
+								<option value='b'>b</option> 
+								<option value='c'>c</option> 
+								<option value='d'>d</option> 
+							</select> </td> 
+					</tr> 
+				</table> 
+			</div></td> 
+	</tr> 
+	<tr> 
+		<td class='abm-fila'> <div id='formulario1148editable_div'> 
+				<table border='0' width='150' cellpadding='0' cellspacing='0'> 
+					<tr> 
+						<td class='ef-etiqueta-obligatorio'>&nbsp;Editable (*)</td> 
+						<td class='ef-zonainput'><INPUT type='text' name='formulario1148editable' id='formulario1148editable' maxlength='20' size='20' value='123' class='ef-input' ></td> 
+					</tr> 
+				</table> 
+			</div></td> 
+	</tr> 
+</table>
+	<input name='ei_form1148' id='ei_form1148' type='hidden' value='' > 
+	<button type='submit' name='ei_form1148_agr' id='ei_form1148_agr' value='' class='abm-input' tabindex='0' accesskey='A' title=" [ALT A]"  onclick='formu.set_evento(new evento_ei("alta", true, ""), false)'><u>A</u>gregar</button>	
+</form>
+</body>
+</html>

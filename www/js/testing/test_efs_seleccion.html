@@ -1,0 +1,130 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+  <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">  
+    <title>JsUnit Test</title>
+    <link rel="stylesheet" type="text/css" href="../jsunit/css/jsUnitStyle.css">
+
+<script language="JavaScript1.4" type="text/javascript" src="../jsunit/app/jsUnitCore.js"></script>
+<script language="JavaScript1.4" type="text/javascript" src="../basico.js"></script>
+<script language="JavaScript1.4" type="text/javascript" src="../interface/ef.js"></script>
+<script language="JavaScript1.4" type="text/javascript" src="../interface/ef_combo.js"></script>
+<script language="JavaScript1.4" type="text/javascript" src="../interface/ef_popup.js"></script>
+<script language="JavaScript1.4" type="text/javascript" src="../interface/ef_checkbox.js"></script>
+<script language='javascript'> ereg_nulo = /^\s*$/;</script>
+<script language="JavaScript1.4" type="text/javascript">
+
+function test_combo() {
+	//Requerido
+	var ef = new ef_combo('formulario1148combo', 'Combo', true);
+	ef.iniciar();
+	this.assertFalse(ef.validar());
+	//Valor Existente
+	ef.set_estado('a');
+	this.assertTrue(ef.validar());	
+
+	//Valor no existente
+	ef.set_estado(apex_ef_no_seteado);
+	this.assertFalse(ef.validar());	
+	try {
+		ok = true
+		ef.set_estado('z');
+	} catch (e) {
+		var ok = false
+	}
+	this.assertFalse(ok);
+	this.assertFalse(ef.validar());	
+
+	//No Requerido
+	var ef = new ef_combo('formulario1148combo', 'Combo', false);
+	ef.iniciar();
+	//Valor no existente
+	ef.set_estado(apex_ef_no_seteado);
+	this.assertTrue(ef.validar());	
+}
+
+function test_checkbox() {
+	var ef = new ef_checkbox('formulario1148checkbox', 'Checkbox', false);
+	ef.iniciar();
+	this.assertEquals(ef.get_estado(), null);
+	ef.chequear(true);
+	this.assertEquals(ef.get_estado(), '1');
+	ef.chequear(false);
+	this.assertEquals(ef.get_estado(), null);		
+}
+
+function test_popup_validar() {
+	//Campo obligatorio
+	var ef = new ef_popup('formulario1148popup', 'Popup', true);
+	ef.iniciar();
+	this.assertFalse(ef.validar());
+}
+
+//Abre un popup y le retorna un valor
+function test_popup_get_estado() {
+	var ef = new ef_popup('formulario1148popup', 'Popup', true);
+	ef.iniciar();
+	ef.vinculo().onclick();
+	var clave = 25;
+	var descripcion = "Descripcion";
+	ventana.opener.popup_callback('formulario1148popup', clave, descripcion);
+	ventana.close();
+	this.assertEquals('25', ef.get_estado());
+	this.assertEquals('Descripcion', ef.get_estado_con_formato());
+}
+var ventana = null;
+</script>
+</head>
+<body>
+<form name='formulario'>
+<table>
+<!-- COMBO -->
+<tr> 
+	<td class='abm-fila'> <div id='formulario1148combo_div'> 
+			<table border='0' width='150' cellpadding='0' cellspacing='0'> 
+				<tr> 
+					<td class='ef-etiqueta'>&nbsp;Combo </td> 
+					<td class='ef-etiqueta'></td> 
+					<td class='ef-zonainput'> <select name='formulario1148combo' id='formulario1148combo' class='ef-combo' > 
+							<option value='nopar' selected>---seleccione---</option> 
+							<option value='a'>a</option> 
+							<option value='b'>b</option> 
+							<option value='c'>c</option> 
+							<option value='d'>d</option> 
+						</select> </td> 
+				</tr> 
+			</table> 
+		</div></td> 
+</tr> 
+<!--- CHECKBOX -->
+<tr> 
+	<td class='abm-fila'> <div id='formulario1148checkbox_div'> 
+			<table border='0' width='150' cellpadding='0' cellspacing='0'> 
+				<tr> 
+					<td class='ef-etiqueta'>&nbsp;Checkbox </td> 
+					<td class='ef-etiqueta'></td> 
+					<td class='ef-zonainput'><input name='formulario1148checkbox' id='formulario1148checkbox' type='checkbox' value='1'  class='' > </td> 
+				</tr> 
+			</table> 
+		</div></td> 
+</tr> 
+<!--- POPUP -->
+<tr> 
+	<td class='abm-fila'> <div id='formulario1148popup_div'> 
+			<table border='0' width='150' cellpadding='0' cellspacing='0'> 
+				<tr> 
+					<td class='ef-etiqueta'>&nbsp;Popup </td> 
+					<td class='ef-etiqueta'></a></td> 
+					<td class='ef-zonainput'><INPUT type='text' name='formulario1148popup_desc' id='formulario1148popup_desc' maxlength='' size='20' value='' class='ef-input' disabled> 
+						<input name='formulario1148popup' id='formulario1148popup' type='hidden' value=''> </td> 
+						<a id='formulario1148popup_vinculo' name='formulario1148popup_vinculo' onclick="ventana= popup_abrir_item('about:blank', 'formulario1148popup', document.formulario.formulario1148popup, document.formulario.formulario1148popup_desc, null)"href='#' name='formulario1148popup_vinculo'><img border='0' src='http://localhost/toba/img/doc.gif'  width='16'   height='16'   title='Selecionar un elemento' alt='Selecionar un elemento'    style='margin: 0px 0px 0px 0px;'></a>
+				</tr> 
+			</table> 
+		</div></td> 
+</tr>
+</table>
+</form>
+</body>
+</html>

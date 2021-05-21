@@ -1,0 +1,1 @@
+Copiar el archivo ldap_usuarios_intervan al directorio instalaciones

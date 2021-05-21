@@ -1,0 +1,10 @@
+#!/bin/sh
+#
+#	Disparo la consola!!!
+#
+dir_actual=`pwd`
+cd `dirname $0`
+TOBA_DIR=`pwd`
+export TOBA_DIR=`dirname $TOBA_DIR`
+cd $dir_actual
+php $TOBA_DIR/php/consola/run.php $*

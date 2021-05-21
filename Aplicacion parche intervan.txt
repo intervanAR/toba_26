@@ -1,0 +1,7 @@
+Aplicacion parche intervan:
+
+1)	Copiar las carpetas php y proyectos en el directorio de toba (TOBA_DIR), reemplazando todos los archivos existentes.
+
+2)	Metadatos de Toba: Incluir la fuente de datos "Oracle" ejecutando el siguiente insert sobre la base de datos de Toba, que se encuentra en PostgreSQL, para el esquema desarrollo:
+
+		INSERT INTO desarrollo.apex_fuente_datos_motor (fuente_datos_motor, nombre, version) VALUES ('oracle', 'Oracle', '10g');

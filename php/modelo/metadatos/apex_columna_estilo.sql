@@ -1,0 +1,12 @@
+INSERT INTO apex_columna_estilo (columna_estilo, css, descripcion, descripcion_corta) VALUES ('0', 'col-num-p1', 'Der. Normal', NULL);
+INSERT INTO apex_columna_estilo (columna_estilo, css, descripcion, descripcion_corta) VALUES ('1', 'col-num-p2', 'Der. Resaltado', NULL);
+INSERT INTO apex_columna_estilo (columna_estilo, css, descripcion, descripcion_corta) VALUES ('2', 'col-num-p3', 'Der. Fondo', NULL);
+INSERT INTO apex_columna_estilo (columna_estilo, css, descripcion, descripcion_corta) VALUES ('3', 'col-num-p4', 'Der. Combinado', NULL);
+INSERT INTO apex_columna_estilo (columna_estilo, css, descripcion, descripcion_corta) VALUES ('4', 'col-tex-p1', 'Izq. Normal', NULL);
+INSERT INTO apex_columna_estilo (columna_estilo, css, descripcion, descripcion_corta) VALUES ('5', 'col-tex-p2', 'Izq. Resaltado', NULL);
+INSERT INTO apex_columna_estilo (columna_estilo, css, descripcion, descripcion_corta) VALUES ('6', 'col-tex-p3', 'Izq. Fondo', NULL);
+INSERT INTO apex_columna_estilo (columna_estilo, css, descripcion, descripcion_corta) VALUES ('7', 'col-cen-s1', 'Centro Normal', NULL);
+INSERT INTO apex_columna_estilo (columna_estilo, css, descripcion, descripcion_corta) VALUES ('8', 'col-cen-s2', 'Centro Resaltado', NULL);
+INSERT INTO apex_columna_estilo (columna_estilo, css, descripcion, descripcion_corta) VALUES ('9', 'col-tex-p4', 'Izq. Combinado', NULL);
+INSERT INTO apex_columna_estilo (columna_estilo, css, descripcion, descripcion_corta) VALUES ('10', 'col-cen-s3', 'Centro Fondo', NULL);
+INSERT INTO apex_columna_estilo (columna_estilo, css, descripcion, descripcion_corta) VALUES ('11', 'col-cen-s4', 'Centro Comb.', NULL);

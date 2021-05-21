@@ -1,0 +1,7 @@
+#!/bin/sh
+export TOBA_DIR=/usr/local/proyectos/toba_trunk
+export PATH="$toba_dir/bin:$PATH"
+toba nucleo versionar -r $1 -u cambiar_usuario
+dirdestino=/tmp/toba
+scp $dirdestino/* repositorio.siu.edu.ar:/var/www/downloads/toba
+rm -f /tmp/toba/*
